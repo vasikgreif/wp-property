@@ -21,11 +21,12 @@ global $wp_properties;
   <thead>
   <tr>
     <th class='wpp_draggable_handle'>&nbsp;</th>
-    <th class='wpp_attribute_name_col'><?php _e( 'Attribute Name', ud_get_wp_property()->domain ) ?></th>
+    <th class='wpp_attribute_name_col'><?php _e( 'Name', ud_get_wp_property()->domain ) ?></th>
+    <th class='wpp_admin_input_col'><?php _e( 'Type', ud_get_wp_property()->domain ) ?></th>
     <th class='wpp_attribute_group_col'><?php _e( 'Group', ud_get_wp_property()->domain ) ?></th>
     <th class='wpp_settings_input_col'><?php _e( 'Settings', ud_get_wp_property()->domain ) ?></th>
     <th class='wpp_search_input_col'><?php _e( 'Search Input', ud_get_wp_property()->domain ) ?></th>
-    <th class='wpp_admin_input_col'><?php _e( 'Data Entry', ud_get_wp_property()->domain ) ?></th>
+
   </tr>
   </thead>
   <tbody>
@@ -60,6 +61,23 @@ global $wp_properties;
         </ul>
       </td>
 
+      <td class="wpp_admin_input_col">
+        <ul>
+          <li>
+            <select name="wpp_settings[admin_attr_fields][<?php echo $slug; ?>]" class="wpp_pre_defined_value_setter wpp_searchable_attr_fields">
+              <?php $meta_box_fields = ud_get_wp_property('attributes.types', array()); ?>
+              <?php if( !empty( $meta_box_fields ) ) foreach( $meta_box_fields as $key => $label ) :  ?>
+                <option value="<?php echo $key; ?>" <?php if( isset( $wp_properties[ 'admin_attr_fields' ][ $slug ] ) ) selected( $wp_properties[ 'admin_attr_fields' ][ $slug ], $key ); ?>><?php echo $label; ?></option>
+              <?php endforeach; ?>
+              <?php do_action( 'wpp::property_attributes::admin_attr_field', $slug ); ?>
+            </select>
+          </li>
+          <li>
+            <textarea class="wpp_attribute_pre_defined_values" name="wpp_settings[predefined_values][<?php echo $slug; ?>]"><?php echo isset( $wp_properties[ 'predefined_values' ][ $slug ] ) ? $wp_properties[ 'predefined_values' ][ $slug ] : ''; ?></textarea>
+          </li>
+        </ul>
+      </td>
+
       <td class="wpp_attribute_group_col">
         <input type="text" class="wpp_attribute_group wpp_group" value="<?php echo( !empty( $group[ 'name' ] ) ? $group[ 'name' ] : "" ); ?>"/>
         <input type="hidden" class="wpp_group_slug" name="wpp_settings[property_stats_groups][<?php echo $slug; ?>]" value="<?php echo( !empty( $gslug ) ? $gslug : "" ); ?>">
@@ -78,6 +96,9 @@ global $wp_properties;
               <input <?php echo ( isset( $wp_properties[ 'searchable_attributes' ] ) && is_array( $wp_properties[ 'searchable_attributes' ] ) && in_array( $slug, $wp_properties[ 'searchable_attributes' ] ) ) ? "CHECKED" : ""; ?> type="checkbox" class="slug" name="wpp_settings[searchable_attributes][]" value="<?php echo $slug; ?>"/>
               <?php _e( 'Searchable.', ud_get_wp_property()->domain ); ?>
             </label>
+          </li>
+          <li>
+
           </li>
           <li class="wpp_development_advanced_option">
             <label>
@@ -119,22 +140,6 @@ global $wp_properties;
         </ul>
       </td>
 
-      <td class="wpp_admin_input_col">
-        <ul>
-          <li>
-            <select name="wpp_settings[admin_attr_fields][<?php echo $slug; ?>]" class="wpp_pre_defined_value_setter wpp_searchable_attr_fields">
-              <?php $meta_box_fields = ud_get_wp_property('attributes.types', array()); ?>
-              <?php if( !empty( $meta_box_fields ) ) foreach( $meta_box_fields as $key => $label ) :  ?>
-                <option value="<?php echo $key; ?>" <?php if( isset( $wp_properties[ 'admin_attr_fields' ][ $slug ] ) ) selected( $wp_properties[ 'admin_attr_fields' ][ $slug ], $key ); ?>><?php echo $label; ?></option>
-              <?php endforeach; ?>
-              <?php do_action( 'wpp::property_attributes::admin_attr_field', $slug ); ?>
-            </select>
-          </li>
-          <li>
-            <textarea class="wpp_attribute_pre_defined_values" name="wpp_settings[predefined_values][<?php echo $slug; ?>]"><?php echo isset( $wp_properties[ 'predefined_values' ][ $slug ] ) ? $wp_properties[ 'predefined_values' ][ $slug ] : ''; ?></textarea>
-          </li>
-        </ul>
-      </td>
     </tr>
   <?php endforeach; ?>
   </tbody>

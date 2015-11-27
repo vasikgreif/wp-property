@@ -1,3 +1,7 @@
+### 2.2.0
+* Added changes to Attributes UI on Developer Tab on Settings page. 'Data Entry' has been renamed to 'Type'. 
+* Added Area type for Attribute.
+
 ### 2.1.5
 * Removed 'Images Upload' data entry for attribute since it duplicated 'Image Upload'.
 
