@@ -52,14 +52,9 @@ namespace UsabilityDynamics\WPP {
           return;
         }
 
-        // Init \RW_Meta_Box defines if needed
-        if ( !defined( 'RWMB_VER' ) ) {
-          $reflector = new \ReflectionClass( '\RW_Meta_Box' );
-          $file = dirname( dirname( $reflector->getFileName() ) ) . '/meta-box.php';
-          if( !file_exists( $file ) ) {
-            return;
-          }
-          include_once( $file );
+        // Init \RW_Meta_Box if needed
+        if ( !defined( 'RWMB_VER' ) && class_exists( 'RWMB_Loader' ) ) {
+          new \RWMB_Loader;
         }
       }
 

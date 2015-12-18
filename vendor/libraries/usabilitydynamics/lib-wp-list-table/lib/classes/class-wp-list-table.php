@@ -833,7 +833,7 @@ namespace UsabilityDynamics\WPLT {
       public function display( $args = array() ) {
 
         echo "<div id=\"{$this->name}\" class=\"wplt_container\">";
-		
+
         if( $this->options['show_filter'] ) {
           $this->filter();
         }
@@ -1000,7 +1000,9 @@ namespace UsabilityDynamics\WPLT {
       public function __get($name) {
         return isset($this->properties[$name]) ? $this->properties[$name] : NULL;
       }
+
     }
+
   }
 
 }

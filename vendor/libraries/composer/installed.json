@@ -6,13 +6,16 @@
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "e420b539e8d7b38b7c6f3f99dccc0386bd3dfe41"
+            "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/e420b539e8d7b38b7c6f3f99dccc0386bd3dfe41",
-            "reference": "e420b539e8d7b38b7c6f3f99dccc0386bd3dfe41",
+            "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+            "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
             "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "1.0.0"
         },
         "replace": {
             "roundcube/plugin-installer": "*",
@@ -22,10 +25,10 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2015-06-13 15:30:38",
-        "type": "composer-installer",
+        "time": "2015-10-29 23:28:48",
+        "type": "composer-plugin",
         "extra": {
-            "class": "Composer\\Installers\\Installer",
+            "class": "Composer\\Installers\\Plugin",
             "branch-alias": {
                 "dev-master": "1.0-dev"
             }
@@ -481,21 +484,18 @@
     },
     {
         "name": "usabilitydynamics/wp-meta-box",
-        "version": "4.5.2.1",
-        "version_normalized": "4.5.2.1",
+        "version": "master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "git@github.com:UsabilityDynamics/wp-meta-box",
-            "reference": "4.5.2.1"
+            "reference": "master"
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/UsabilityDynamics/wp-meta-box/archive/4.5.2.1.zip",
+            "url": "https://github.com/UsabilityDynamics/wp-meta-box/archive/master.zip",
             "reference": null,
             "shasum": null
-        },
-        "require": {
-            "composer/installers": "~1.0"
         },
         "type": "wordpress-plugin",
         "extra": {
@@ -504,19 +504,20 @@
         "installation-source": "dist",
         "autoload": {
             "files": [
-                "meta-box-loader.php"
+                "meta-box.php"
             ],
             "classmap": [
+                "inc/",
                 "inc/fields",
-                "inc/common.php",
                 "inc/field.php",
-                "inc/field-multiple-values.php",
+                "inc/meta-box.php",
+                "inc/validation.php",
                 "inc/helpers.php",
-                "inc/meta-box.php"
+                "inc/core.php"
             ]
         },
         "license": [
-            "GPLv2"
+            "GPL-2.0"
         ],
         "authors": [
             {
@@ -527,8 +528,9 @@
             }
         ],
         "description": "Easily create custom meta boxes in WordPress.",
-        "homepage": "http://www.deluxeblogtips.com/meta-box/",
+        "homepage": "http://metabox.io",
         "keywords": [
+            "custom-field",
             "meta-box",
             "select2",
             "ui",
@@ -539,16 +541,16 @@
     },
     {
         "name": "usabilitydynamics/wp-meta-box-utilities",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
             "url": "git@github.com:UsabilityDynamics/wp-meta-box-utilities",
-            "reference": "1.0.2"
+            "reference": "1.0.3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/UsabilityDynamics/wp-meta-box-utilities/archive/1.0.2.zip",
+            "url": "https://github.com/UsabilityDynamics/wp-meta-box-utilities/archive/1.0.3.zip",
             "reference": null,
             "shasum": null
         },
